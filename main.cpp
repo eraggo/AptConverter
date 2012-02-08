@@ -9,7 +9,10 @@ void linear(string);
 void arc(string);
 void replace(string&, string, string);
 
+// input streams
 ifstream in;
+// Output stream
+ofstream out;
 
 int main(int argc, char ** argv)
 {
@@ -20,8 +23,14 @@ int main(int argc, char ** argv)
 		cout << "Usage: " << argv[0] << " <filename>\n";
 		return -1;
 	}
-	
-	// Try to open file
+
+	// Create name for tmpfile
+	string tmpfile(argv[1]);
+	tmpfile = tmpfile + ".tmp";
+	// open and clear tmpfile
+	out.open(tmpfile.c_str(), ios::trunc);
+
+	// Try to open input file
 	in.open(argv[1]);
 	if (in.is_open()) {
 		cout << "File " << argv[1] << " opened succesfully\n";
@@ -41,7 +50,9 @@ int main(int argc, char ** argv)
 			linear(rivi);
 	}
 
+	// Data has been caught... time to "swap"
 	in.close();
+	out.close();
 	
 	return 0;
 }
