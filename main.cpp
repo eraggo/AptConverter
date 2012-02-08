@@ -63,6 +63,12 @@ void linear(string rivi)
 void arc(string rivi)
 {
 	cout << "****Found ARC\n";
+	// Format first coordinates
+	// Some "magic" happening here
+	replace(rivi,"GOFWD / ( CIRCLE / ", ""); 
+	replace(rivi,"$","");
+	replace(rivi,",","\t");
+	cout << rivi << endl;
 }
 
 /* 
