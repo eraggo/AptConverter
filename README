@@ -4,3 +4,12 @@ Timo Heino, 2012
 Target: to convert from apt-file (somekind format at least) to RAPID program(used in ABB robot) in Kajaani University of Applied Sciences.
 
 Yed, code is a mess! BUT! I'll try to maintain it.
+
+tmpfile format: (can be changing)
+replace "," as tabs
+
+L <x>,<y>,<z>				linear move to x,y,z
+A <x>,<y>,<z>,<r>,<px>,<py>,<pz>	arc to x,y,z with radius r
+					px,py,pz point in arc
+I <x>,<y>,<z>				arc direction from the center
+............
