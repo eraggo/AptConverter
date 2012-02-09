@@ -4,10 +4,14 @@
 #include <string>
 using namespace std;
 
+void dir(string);
 void comment(string);
 void linear(string);
 void arc(string);
 void replace(string&, string, string);
+
+// direction
+float dx, dy, dz;
 
 // input streams
 ifstream in;
@@ -28,7 +32,7 @@ int main(int argc, char ** argv)
 	string tmpfile(argv[1]);
 	tmpfile = tmpfile + ".tmp";
 	// open and clear tmpfile
-	out.open(tmpfile.c_str(), ios::trunc);
+//	out.open(tmpfile.c_str(), ios::trunc);
 
 	// Try to open input file
 	in.open(argv[1]);
@@ -44,6 +48,8 @@ int main(int argc, char ** argv)
 		getline(in,rivi);
 		if(rivi[0]=='$')
 			comment(rivi);
+		else if(rivi.find("INDIRV")!=string::npos)
+			dir(rivi);
 		else if(rivi.find("CIRCLE")!=string::npos)
 			arc(rivi);
 		else if(rivi.find("GOTO")!=string::npos)
@@ -52,9 +58,16 @@ int main(int argc, char ** argv)
 
 	// Data has been caught... time to "swap"
 	in.close();
-	out.close();
+//	out.close();
 	
 	return 0;
+}
+
+void dir(string rivi)
+{
+	replace(rivi, "INDIRV / ","");
+	replace(rivi, ",", "\t");
+	cout << "Direction from center: " << rivi << endl;
 }
 
 void comment(string rivi)
