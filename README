@@ -1,0 +1,6 @@
+Ugly "brute-forced" apt->RAPID converter
+Timo Heino, 2012
+
+Target: to convert from apt-file (somekind format at least) to RAPID program(used in ABB robot) in Kajaani University of Applied Sciences.
+
+Yed, code is a mess! BUT! I'll try to maintain it.
