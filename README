@@ -9,7 +9,8 @@ tmpfile format: (can be changing)
 replace "," as tabs
 
 L,<x>,<y>,<z>				linear move to x,y,z
-A,<x>,<y>,<z>,<r>,<ex>,<ey>,<ez>	arc from x,y,z with radius r
+A,<x>,<y>,<z>,<r>,<ex>,<ey>,<ez>	arc from x,y,z (center) 
+					with radius r
 					to ex, ey, ez 
 I,<x>,<y>,<z>				arc direction from the center
 ............
