@@ -58,7 +58,7 @@ int main(int argc, char ** argv)
 
 	// Data has been caught... time to "swap"
 	in.close();
-//	out.close();
+	out.close();
 	
 	return 0;
 }
@@ -68,6 +68,8 @@ void dir(string rivi)
 	replace(rivi, "INDIRV / ","");
 	replace(rivi, ",", "\t");
 	cout << "Direction from center: " << rivi << endl;
+	rivi = "I\t" + rivi + "\n";
+	out << rivi;
 }
 
 void comment(string rivi)
@@ -79,9 +81,10 @@ void comment(string rivi)
 void linear(string rivi)
 {
 	replace(rivi, "GOTO / ", "");
-	rivi="MoveL " + rivi;
-	cout << rivi << endl;
-	
+	replace(rivi, ",", "\t");
+	rivi="L\t" + rivi + "\n";
+	cout << rivi;
+	out << rivi;
 }
 
 void arc(string rivi)
@@ -106,6 +109,8 @@ void arc(string rivi)
 	cout << rivi << endl;
 	cout << radius << endl;
 	cout << end << endl;
+	rivi = "A\t"+rivi+radius+"\t"+end+"\n";
+	out << rivi;
 }
 
 /* 
