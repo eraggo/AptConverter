@@ -32,7 +32,7 @@ int main(int argc, char ** argv)
 	string tmpfile(argv[1]);
 	tmpfile = tmpfile + ".tmp";
 	// open and clear tmpfile
-//	out.open(tmpfile.c_str(), ios::trunc);
+	out.open(tmpfile.c_str(), ios::trunc);
 
 	// Try to open input file
 	in.open(argv[1]);
@@ -87,6 +87,7 @@ void linear(string rivi)
 void arc(string rivi)
 {
 	string radius;
+	string end;
 	cout << "****Found ARC\n";
 	// Format first coordinates
 	// Some "magic" happening here
@@ -94,10 +95,17 @@ void arc(string rivi)
 	replace(rivi,"$","");
 	replace(rivi,",","\t");
 	// Parsing radius data....
-	in >> radius;
+	getline(in, radius);
 	replace(radius," ), $","");
+	// Parsing end point data
+	getline(in, end);	// Not needed
+	getline(in, end);
+	replace(end, " ", "");
+	replace(end, ")", "");
+	replace(end, ",", "\t");
 	cout << rivi << endl;
 	cout << radius << endl;
+	cout << end << endl;
 }
 
 /* 
