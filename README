@@ -3,7 +3,7 @@ Timo Heino, 2012
 
 Target: to convert from apt-file (somekind format at least) to RAPID program(used in ABB robot) in Kajaani University of Applied Sciences.
 
-Yes, code is a mess! BUT! I'll try to maintain it.
+Yes, code is a mess! BUT! I'll try to maintain it. Perhaps this is made in a class object some day :) 
 
 tmpfile format: (can be changing)
 replace "," as tabs
