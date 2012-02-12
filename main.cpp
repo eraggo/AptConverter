@@ -100,7 +100,6 @@ void dir(string rivi)
 {
 	replace(rivi, "INDIRV / ","");
 	replace(rivi, ",", "\t");
-	cout << "Direction from center: " << rivi << endl;
 	rivi = "I\t" + rivi + "\n";
 	out << rivi;
 }
@@ -116,7 +115,6 @@ void linear(string rivi)
 	replace(rivi, "GOTO / ", "");
 	replace(rivi, ",", "\t");
 	rivi="L\t" + rivi + "\n";
-	cout << rivi;
 	out << rivi;
 }
 
@@ -124,7 +122,6 @@ void arc(string rivi)
 {
 	string radius;
 	string end;
-	cout << "****Found ARC\n";
 	// Format first coordinates
 	// Some "magic" happening here
 	replace(rivi,"GOFWD / ( CIRCLE / ", ""); 
@@ -139,9 +136,6 @@ void arc(string rivi)
 	replace(end, " ", "");
 	replace(end, ")", "");
 	replace(end, ",", "\t");
-	cout << rivi << endl;
-	cout << radius << endl;
-	cout << end << endl;
 	rivi = "A\t"+rivi+radius+"\t"+end+"\n";
 	out << rivi;
 }
