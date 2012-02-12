@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+void create_arc();
+void handle_direction();
+void create_linear();
 void dir(string);
 void comment(string);
 void linear(string);
@@ -12,8 +15,9 @@ void replace(string&, string, string);
 
 // direction
 float dx, dy, dz;
-
-// input streams
+// current coordinate (changed after every move)
+float x, y, z;
+// input stream
 ifstream in;
 // Output stream
 ofstream out;
@@ -58,8 +62,38 @@ int main(int argc, char ** argv)
 	// Data has been caught... time to "swap"
 	in.close();
 	out.close();
-	
+	////////////////////////////////////////////////////
+
+	in.open(tmpfile.c_str());
+	out.open("OUTPUT", ios::trunc);
+	//figure out which command
+	char cmd;
+	in >> cmd;
+	if(cmd=='L')
+		create_linear();
+	else if(cmd=='I')
+		handle_direction();
+	else if(cmd=='A')
+		create_arc();
+
+	out.close();
+	in.close();
 	return 0;
+}
+
+void create_arc()
+{
+
+}
+
+void handle_direction()
+{
+
+}
+
+void create_linear()
+{
+
 }
 
 void dir(string rivi)
