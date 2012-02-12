@@ -43,8 +43,7 @@ int main(int argc, char ** argv)
 		return -1;
 	}
 
-	//TODO Make while loop
-	for (int i=0; i<50; i++) {
+	while (!in.eof()) {
 		getline(in,rivi);
 		if(rivi[0]=='$')
 			comment(rivi);
