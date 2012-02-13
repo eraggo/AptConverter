@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 void create_arc();
@@ -63,18 +64,20 @@ int main(int argc, char ** argv)
 	in.close();
 	out.close();
 	////////////////////////////////////////////////////
-
 	in.open(tmpfile.c_str());
 	out.open("OUTPUT", ios::trunc);
 	//figure out which command
 	char cmd;
-	in >> cmd;
-	if(cmd=='L')
-		create_linear();
-	else if(cmd=='I')
-		handle_direction();
-	else if(cmd=='A')
-		create_arc();
+
+	while (!in.eof()) {
+		in >> cmd;
+		if(cmd=='L')
+			create_linear();
+		else if(cmd=='I')
+			handle_direction();
+		else if(cmd=='A')
+			create_arc();
+	}
 
 	out.close();
 	in.close();
@@ -83,17 +86,42 @@ int main(int argc, char ** argv)
 
 void create_arc()
 {
-
+	// center coordinate
+	float cx, cy, cz;
+	// radius
+	float r;
+	// end point
+	float ex, ey, ez;
 }
 
 void handle_direction()
 {
+	in >> dx >> dy >> dz;
+	if (dx<0)
+		dx=-1.0;
+	else if (dx>0)
+		dx=1.0;
+	else
+		dx=0.0;
 
+	if (dy<0)
+		dy=-1.0;
+	else if (dy>0)
+		dy=1.0;
+	else
+		dy=0.0;
+
+	if (dz<0)
+		dz=-1.0;
+	else if (dz>0)
+		dz=1.0;
+	else
+		dz=0.0;
 }
 
 void create_linear()
 {
-
+	in >> x >> y >> z;
 }
 
 void dir(string rivi)
