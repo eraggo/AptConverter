@@ -33,9 +33,11 @@ int main(int argc, char ** argv)
 		return -1;
 	}
 
+	// Create filenames
 	// Create name for tmpfile
 	string tmpfile(argv[1]);
 	tmpfile = tmpfile + ".tmp";
+	string output(argv[1]); //TODO
 	// open and clear tmpfile
 	out.open(tmpfile.c_str(), ios::trunc);
 
@@ -96,6 +98,29 @@ void create_arc()
 	float kx, ky, kz;
 	// Read points and radius
 	in >> cx >> cy >> cz >> r >> ex >> ey >> ez;
+	// Time for math
+	// Necessary to calculate??
+	kx = ex - x;
+	ky = ey - y;
+	kz = ez - z;
+	// Direction effects calculation
+	if (dx) {
+		ky=ky/2;
+		kx=dx*sqrt(r*r-ky*ky);
+		ky=ky+y;
+		kx=kx+x;
+		cout << "arc from: "<<x<<","<<y<<endl;
+		cout << "arc to: "<<ex<<","<<ey<<endl;
+		cout << "Point in arc: (" << kx << "," << ky <<")\n";
+	} else {
+		kx=kx/2;
+		ky=dy*sqrt(r*r-kx*kx);
+		kx=kx+x;
+		ky=ky+y;
+		cout << "arc from: "<<x<<","<<y<<endl;
+		cout << "arc to: "<<ex<<","<<ey<<endl;
+		cout << "Point in arc: (" << kx << "," << ky <<")\n";
+	}
 }
 
 void handle_direction()
