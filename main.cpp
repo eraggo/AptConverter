@@ -8,6 +8,7 @@ using namespace std;
 void create_arc();
 void handle_direction();
 void create_linear();
+void create_feed();
 void fedrate(string);
 void dir(string);
 void comment(string);
@@ -19,6 +20,8 @@ void replace(string&, string, string);
 float dx, dy, dz;
 // current coordinate (changed after every move)
 float x, y, z;
+// current feedrate
+float feed;
 // input stream
 ifstream in;
 // Output stream
@@ -83,6 +86,8 @@ int main(int argc, char ** argv)
 			handle_direction();
 		else if(cmd=='A')
 			create_arc();
+		else if(cmd='F')
+			create_feed();
 	}
 
 	out.close();
@@ -155,6 +160,11 @@ void handle_direction()
 void create_linear()
 {
 	in >> x >> y >> z;
+}
+
+void create_feed()
+{
+	in >> feed;
 }
 
 void dir(string rivi)
