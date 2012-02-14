@@ -110,17 +110,11 @@ void create_arc()
 		kx=dx*sqrt(r*r-ky*ky);
 		ky=ky+y;
 		kx=kx+x;
-		cout << "arc from: "<<x<<","<<y<<endl;
-		cout << "arc to: "<<ex<<","<<ey<<endl;
-		cout << "Point in arc: (" << kx << "," << ky <<")\n";
 	} else {
 		kx=kx/2;
 		ky=dy*sqrt(r*r-kx*kx);
 		kx=kx+x;
 		ky=ky+y;
-		cout << "arc from: "<<x<<","<<y<<endl;
-		cout << "arc to: "<<ex<<","<<ey<<endl;
-		cout << "Point in arc: (" << kx << "," << ky <<")\n";
 	}
 	// Generate RAPID
 	/////TODO
