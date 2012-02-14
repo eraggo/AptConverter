@@ -8,6 +8,7 @@ using namespace std;
 void create_arc();
 void handle_direction();
 void create_linear();
+void fedrate(string);
 void dir(string);
 void comment(string);
 void linear(string);
@@ -60,6 +61,8 @@ int main(int argc, char ** argv)
 			arc(rivi);
 		else if(rivi.find("GOTO")!=string::npos)
 			linear(rivi);
+		else if(rivi.find("FEDRAT")!=string::npos)
+			fedrate(rivi);
 	}
 
 	// Data has been caught... time to "swap"
@@ -162,6 +165,12 @@ void dir(string rivi)
 	out << rivi;
 }
 
+void fedrate(string rivi)
+{
+	replace(rivi, "FEDRAT / ","");
+	replace(rivi, ",  MMPM","");
+	out << "F\t" << rivi << endl;
+}
 void comment(string rivi)
 {
 	cout << "Kommentti:" << rivi << endl;
