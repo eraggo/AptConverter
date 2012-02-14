@@ -92,6 +92,10 @@ void create_arc()
 	float r;
 	// end point
 	float ex, ey, ez;
+	// Temp variables
+	float kx, ky, kz;
+	// Read points and radius
+	in >> cx >> cy >> cz >> r >> ex >> ey >> ez;
 }
 
 void handle_direction()
