@@ -65,7 +65,8 @@ int main(int argc, char ** argv)
 	// Data has been caught... time to "swap"
 	in.close();
 	out.close();
-	////////////////////////////////////////////////////
+
+	// STAGE 2
 	in.open(tmpfile.c_str());
 	out.open("OUTPUT", ios::trunc);
 	//figure out which command
@@ -121,6 +122,12 @@ void create_arc()
 		cout << "arc to: "<<ex<<","<<ey<<endl;
 		cout << "Point in arc: (" << kx << "," << ky <<")\n";
 	}
+	// Generate RAPID
+	/////TODO
+	// Update current location
+	x = ex;
+	y = ey;
+	z = ez;
 }
 
 void handle_direction()
