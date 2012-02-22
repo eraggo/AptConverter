@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <sstream>
 using namespace std;
 
 void create_arc();
@@ -14,6 +15,8 @@ void dir(string);
 void comment(string);
 void linear(string);
 void arc(string);
+template <typename T>
+string to_str(T);
 void replace(string&, string, string);
 
 // direction
@@ -215,6 +218,17 @@ void arc(string rivi)
 	replace(end, ",", "\t");
 	rivi = "A\t"+rivi+radius+"\t"+end+"\n";
 	out << rivi;
+}
+
+/*
+Funtion for changing numbers to strings
+*/
+template <typename T>
+string to_str(T source)
+{
+	ostringstream target;
+	target << source;
+	return target.str();
 }
 
 /* 
