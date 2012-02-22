@@ -241,7 +241,10 @@ string to_str(T source)
 {
 	ostringstream target;
 	target << source;
-	return target.str();
+	if (source-(int)source > 0)
+		return target.str();
+	else
+		return target.str()+".";
 }
 
 /* 
