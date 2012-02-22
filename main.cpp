@@ -17,6 +17,8 @@ void linear(string);
 void arc(string);
 template <typename T>
 string to_str(T);
+template <typename T>
+string point(T,T,T);
 void replace(string&, string, string);
 
 // direction
@@ -129,6 +131,9 @@ void create_arc()
 	}
 	// Generate RAPID
 	/////TODO
+	string rapid = "MoveC "+point(kx, ky, kz);
+	rapid = rapid + "," + point(ex,ey,ez)+"\n";
+	out << rapid;
 	// Update current location
 	x = ex;
 	y = ey;
@@ -218,6 +223,14 @@ void arc(string rivi)
 	replace(end, ",", "\t");
 	rivi = "A\t"+rivi+radius+"\t"+end+"\n";
 	out << rivi;
+}
+
+// funtion returns string format of point (in rapid style)
+template <typename T>
+string point(T tx, T ty, T tz)
+{
+	string rapid="["+to_str(tx)+","+to_str(ty)+","+to_str(tz)+"]";
+	return rapid;
 }
 
 /*
