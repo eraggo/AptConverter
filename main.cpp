@@ -130,9 +130,16 @@ void create_arc()
 		ky=ky+y;
 	}
 	// Generate RAPID
-	/////TODO
+	// First point in arc
 	string rapid = "MoveC "+point(kx, ky, kz);
-	rapid = rapid + "," + point(ex,ey,ez)+"\n";
+	// next end point
+	rapid = rapid + "," + point(ex,ey,ez);
+	// then feed rate
+	rapid = rapid + ",v" + to_str(feed);
+	// next "zone"
+	rapid = rapid + ",fine";
+	// and lastly tool code
+	rapid = rapid + ",tool1\n";
 	out << rapid;
 	// Update current location
 	x = ex;
