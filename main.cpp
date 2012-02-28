@@ -175,6 +175,11 @@ void handle_direction()
 void create_linear()
 {
 	in >> x >> y >> z;
+	string rapid="MoveL "+point(x,y,z);
+	rapid = rapid + ",v" + to_str(feed);
+	rapid = rapid + ",fine";
+	rapid = rapid + ",tool1\n";
+	out << rapid;
 }
 
 void create_feed()
