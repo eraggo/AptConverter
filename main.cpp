@@ -56,6 +56,7 @@ int main(int argc, char ** argv)
 		cout << "File " << argv[1] << " opened succesfully\n";
 	} else {
 		cout << "Error opening file.\n";
+		out.close();
 		return -1;
 	}
 
