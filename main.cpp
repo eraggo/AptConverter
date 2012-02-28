@@ -100,7 +100,7 @@ int main(int argc, char ** argv)
 			handle_direction();
 		else if(cmd=='A')
 			create_arc();
-		else if(cmd='F')
+		else if(cmd=='F')
 			create_feed();
 	}
 
