@@ -6,10 +6,12 @@
 #include <sstream>
 using namespace std;
 
+void handle_tool();
 void create_arc();
 void handle_direction();
 void create_linear();
 void create_feed();
+void tool(string);
 void fedrate(string);
 void dir(string);
 void comment(string);
@@ -27,6 +29,8 @@ float dx, dy, dz;
 float x, y, z;
 // current feedrate
 float feed;
+// current tool
+int ctool;
 // input stream
 ifstream in;
 // Output stream
@@ -72,6 +76,8 @@ int main(int argc, char ** argv)
 			linear(rivi);
 		else if(rivi.find("FEDRAT")!=string::npos)
 			fedrate(rivi);
+		else if(rivi.find("LOADTL")!=string::npos)
+			tool(rivi);
 	}
 
 	// Data has been caught... time to "swap"
@@ -94,11 +100,18 @@ int main(int argc, char ** argv)
 			create_arc();
 		else if(cmd='F')
 			create_feed();
+		else if(cmd='T')
+			handle_tool();
 	}
 
 	out.close();
 	in.close();
 	return 0;
+}
+
+void handle_tool()
+{
+	in >> ctool;
 }
 
 void create_arc()
@@ -194,6 +207,12 @@ void dir(string rivi)
 	replace(rivi, ",", "\t");
 	rivi = "I\t" + rivi + "\n";
 	out << rivi;
+}
+
+void tool(string rivi)
+{
+	replace(rivi, "LOADTL / ","");
+	out << "T\t" << rivi << endl;
 }
 
 void fedrate(string rivi)
