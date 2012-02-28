@@ -94,14 +94,14 @@ int main(int argc, char ** argv)
 		in >> cmd;
 		if(cmd=='L')
 			create_linear();
+		else if(cmd=='T')
+			handle_tool();
 		else if(cmd=='I')
 			handle_direction();
 		else if(cmd=='A')
 			create_arc();
 		else if(cmd='F')
 			create_feed();
-		else if(cmd='T')
-			handle_tool();
 	}
 
 	out.close();
@@ -153,7 +153,7 @@ void create_arc()
 	// next "zone"
 	rapid = rapid + ",fine";
 	// and lastly tool code
-	rapid = rapid + ",tool1\n";
+	rapid = rapid + ",tool" + to_str(ctool) + "\n";
 	out << rapid;
 	// Update current location
 	x = ex;
@@ -192,7 +192,7 @@ void create_linear()
 	string rapid="MoveL "+point(x,y,z);
 	rapid = rapid + ",v" + to_str(feed);
 	rapid = rapid + ",fine";
-	rapid = rapid + ",tool1\n";
+	rapid = rapid + ",tool" + to_str(ctool) + "\n";
 	out << rapid;
 }
 
