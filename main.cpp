@@ -146,8 +146,14 @@ void create_arc()
 	// Generate RAPID
 	// First point in arc
 	string rapid = "MoveC "+point(kx, ky, kz);
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]";
 	// next end point
 	rapid = rapid + "," + point(ex,ey,ez);
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]";
 	// then feed rate
 	rapid = rapid + ",v" + to_str(feed);
 	// next "zone"
@@ -190,6 +196,9 @@ void create_linear()
 {
 	in >> x >> y >> z;
 	string rapid="MoveL "+point(x,y,z);
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[0,0,0,0]";
+	rapid = rapid + ",[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]";
 	rapid = rapid + ",v" + to_str(feed);
 	rapid = rapid + ",fine";
 	rapid = rapid + ",tool" + to_str(ctool) + "\n";
